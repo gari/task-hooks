@@ -57,8 +57,8 @@ combined = ' '.join(['"%s"' % tag for tag in tags]).encode('utf-8').strip()
 
 # Started task.
 if 'start' in new and not 'start' in old:
-  os.system('timew start ' + combined + ' :yes')
+  os.system('timew start ' + combined + ' :yes :adjust')
 
 # Stopped task.
 elif not 'start' in new and 'start' in old:
-  os.system('timew stop ' + combined + ' :yes')
+    os.system('timew stop ' + combined + ' :yes :adjust')
