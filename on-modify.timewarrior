@@ -41,6 +41,7 @@ old = json.loads(sys.stdin.readline())
 new = json.loads(sys.stdin.readline())
 print(json.dumps(new))
 
+
 # Extract attributes for use as tags.
 if 'project' in new:
   tags = ["pro:" + str(new['project']) + " -- " + "desc:" + new['description']]
@@ -50,13 +51,14 @@ else:
 if 'project' in new:
   tags.append("Project: " + str(new['project']))
 
-if 'tags' in new:
-  tags.extend(new['tags'])
+#if 'tags' in new:
+#  tags.extend(new['tags'])
 
 combined = ' '.join(['"%s"' % tag for tag in tags]).encode('utf-8').strip()
 
 # Started task.
 if 'start' in new and not 'start' in old:
+  print(combined)
   os.system('timew start ' + combined + ' :yes')
 
 # Stopped task.
